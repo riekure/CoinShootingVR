@@ -6,8 +6,8 @@ public class ShootingController : MonoBehaviour {
 
     public GameObject mainCamera;
 
-
     public GameObject marker_1;     // 視点UIの対象Plane
+    public GameObject marker_2;     // 視点UIの対象Plane
 
     public int markerCount;         // カウント対象になるマーカーの数
 
@@ -21,7 +21,7 @@ public class ShootingController : MonoBehaviour {
         shootingSE = GetComponent<AudioSource>();   // 効果音を鳴らす機能
 
         gameClearLogo.SetActive(false);             // 最初はロゴを非表示
-        markerCount = 1;                            // マーカーが１つ
+        markerCount = 2;                            // マーカーが１つ
     }
     
     // Update is called once per frame
@@ -36,10 +36,16 @@ public class ShootingController : MonoBehaviour {
             if (hit.collider.gameObject.tag == "Target")          // 視点UIの対象かをタグで判定
             {
                 Debug.Log("hit");
-                if (CheckHitGameObject(hit, marker_1) == true)
+                if (CheckHitGameObject(hit, marker_1))
                 {
                     shootingSE.PlayOneShot(shootingSE.clip);     // 消すときに音を鳴らす
                     marker_1.SetActive(false);
+                    markerCount--;
+                }
+                if (CheckHitGameObject(hit, marker_2))
+                {
+                    shootingSE.PlayOneShot(shootingSE.clip);     // 消すときに音を鳴らす
+                    marker_2.SetActive(false);
                     markerCount--;
                 }
             }

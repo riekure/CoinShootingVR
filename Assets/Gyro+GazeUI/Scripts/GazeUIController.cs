@@ -35,19 +35,19 @@ public class GazeUIController : MonoBehaviour
             if (hit.collider.gameObject.tag == "VRUI")          // 視点UIの対象かをタグで判定
             {
                 Debug.Log("hit");
-                if (CheckHitGameObject(hit, movePlane_1) == true)
+                if (CheckHitGameObject(hit, movePlane_1))
                 {
                     movePlane_1.GetComponent<Renderer>().material = _material[1];   // ヒットの色
-                    if (DrawSpriteFromGazeTimeCount(movePlaneSprite_1) == true)
+                    if (DrawSpriteFromGazeTimeCount(movePlaneSprite_1))
                     {
                         mainCamera.transform.position = new Vector3(0, 1.2f, -5);
                         mainCamera.transform.rotation = Quaternion.Euler(0, 0, 0);    // 角度を変えるとき
                     }
                 }
-                if (CheckHitGameObject(hit, movePlane_2) == true)
+                if (CheckHitGameObject(hit, movePlane_2))
                 {
                     movePlane_2.GetComponent<Renderer>().material = _material[1];   // ヒットの色
-                    if (DrawSpriteFromGazeTimeCount(movePlaneSprite_2) == true)
+                    if (DrawSpriteFromGazeTimeCount(movePlaneSprite_2))
                     {
                         mainCamera.transform.position = new Vector3(0, 1.2f, -10);
                         mainCamera.transform.rotation = Quaternion.Euler(0, 180f, 0);    // 角度を変えるとき
